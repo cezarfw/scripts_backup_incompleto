@@ -1,10 +1,10 @@
 #!/bin/bash
 
-printf "############################################################
-        #                                                          #
-        #              RESTAURAÇÃO DE BACKUP                       #
-        #                                                          #
-        ############################################################\n"
+echo "############################################################"
+echo "#                                                          #"
+echo "#              RESTAURAÇÃO DE BACKUP                       #"
+echo "#                                                          #"
+echo "############################################################\n"
 echo -e "O processo será composto pelas etapas abaixo:\n"
 echo -e "1) Gerar um backup de segurança da conta no /home/hgtrans/ com o número do ticket."
 echo -e "2) Realizar a restauração total da conta."
@@ -18,7 +18,7 @@ read decisao
 	case $decisao in
 		C|c) echo "Iniciando a cópia da cópia por segurança";;
 			mkdir /home/hgtrans/$ticket;
-			if [-d /home/hgtrans/$ticket] then
+			if [-d /home/hgtrans/$ticket]; then
 				/scripts/pkgacct $usuario /home/hgtrans/$ticket;
 				clear
 				echo "O backup foi concluído neste momento, iniciando agora a restauração do NAS"
@@ -53,7 +53,7 @@ read decisao
 				echo -e "Cite o banco de dados que deseja restaurar ou digite 'all' para todos"
 				leia restore_banco
 				echo -e "A restauração está sendo iniciada..."
-				if restore_banco=all then 
+				if restore_banco=all; then 
 					/home/hgbackupdir/restore.pl.old $usuario mysql all
 				else
 					/home/hgbackupdir/restore.pl.old $usuario mysql $restorebanco
