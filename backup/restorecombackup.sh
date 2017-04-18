@@ -24,22 +24,23 @@ read decisao
  		*)  "Opção Inválida!" ; echo ; principal ;; 	                     
 	esac
 }
-#RESTAURAÇÃO COMPLETA		
-			Completa() {
-			echo -e "Iniciando a cópia de segurança:"
-			mkdir /home/hgtrans/$ticket
+#RESTAURAÇÃO COMPLETA           
+                        Completa() {
+                        echo -e "Iniciando a cópia de segurança:"
+                        mkdir /home/hgtrans/$ticket
                         if [ -d /home/hgtrans/$ticket ]; then
                                 /scripts/pkgacct $usuario /home/hgtrans/$ticket;
                                 clear
                                 echo "O backup foi concluído neste momento, iniciando agora a restauração do NAS"
                                 sleep 5
                                 /home/hgbackup/restore.pl.old $usuario full;    
-                                cd ~$usuario; mv /home/hgtrans/$ticket backup_hg;
+                                cd /home/$usuario; mv /home/hgtrans/$ticket backup_hg;
                                 perms
                                 echo -e "A restauração foi finalizada"
                         fi
 
-			}
+                        }
+
 
 #RESTAURAÇÃO PARCIAL
 
